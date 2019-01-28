@@ -1,6 +1,7 @@
 clean
 clean-build
 compile
+init
 jar
 main
 run
