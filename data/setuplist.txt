@@ -1,6 +1,7 @@
 ### setuplist.txt first line must be a comment
 +My Circuits
->shift_std.txt Test Shift Register
+shift_std.txt Test Shift Register
+>shift_74ls164_test1.txt Test1 74ls164
 -
 +Basics
 ohms.txt Ohm's Law

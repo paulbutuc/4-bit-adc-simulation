@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.StringTokenizer;
 import java.util.Random;
 
 class Shift74LS164Elm extends ChipElm {	
@@ -8,10 +9,17 @@ class Shift74LS164Elm extends ChipElm {
 	
 	public Shift74LS164Elm(int xx, int yy) {
 		super(xx, yy);
+	}	
+	public Shift74LS164Elm(int xa, int ya, int xb, int yb, int f, StringTokenizer st) {
+	    super(xa, ya, xb, yb, f, st);
 	}
 	
 	String getChipName() {
 		return "74LS164 shift register";
+	}
+	
+	int getDumpType() {
+		return 191;
 	}
 	
 	void setupPins() {
