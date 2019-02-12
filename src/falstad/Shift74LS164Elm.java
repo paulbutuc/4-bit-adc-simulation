@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.lang.Math;
 import java.util.StringTokenizer;
 import java.util.Random;
 
@@ -6,6 +7,8 @@ class Shift74LS164Elm extends ChipElm {
 	private int A, B;
 	private int CLK, CLR;
 	private int firstOutputPin;
+	private boolean clockState;
+	private short outputState;
 	
 	public Shift74LS164Elm(int xx, int yy) {
 		super(xx, yy);
@@ -59,12 +62,17 @@ class Shift74LS164Elm extends ChipElm {
 		CLR = pos;
 		pins[pos] = new Pin(1, SIDE_S, "CLR");
 		
+		// Simulate random state
 		for (int i = firstOutputPin; i < getVoltageSourceCount(); i++)
 			if (state.nextInt(100) % 2 == 0)
 				pins[i].value = false;
 			else
 				pins[i].value = true;
-				
+		
+		if (pins[CLK].value == true)
+			clockState = true;
+		else
+			clockState = false;				
 	}
 	
 	int getPostCount() {
@@ -76,12 +84,39 @@ class Shift74LS164Elm extends ChipElm {
 	}
 	
 	void clr() {
-		for (int i = firstOutputPin; i < getVoltageSourceCount(); i++)
-			pins[i].value = false;
+		for (int i = 0; i < getVoltageSourceCount()+1; i++)
+			pins[i + firstOutputPin].value = false;
+		outputState = 0;
 	}
 	
 	void execute() {
 		if (pins[CLR].value == true)
 			clr();
+		
+		if (pins[CLK].value == true && clockState == false && pins[CLR].value == false) {
+			// Check to state of the outputs and calculate outputState
+			outputState = 0;
+			for (int i = 0; i < getVoltageSourceCount(); i++)
+				if (pins[i + firstOutputPin].value == true)
+					outputState += (short)(Math.pow(2, getVoltageSourceCount()-i - 1));
+			// Shift the outputs
+			outputState = (short)(outputState >>> 1);
+			
+			// Check if A and B are high, if so 'turn on' Q0
+			if (pins[A].value == true && pins[B].value == true)
+				outputState += (short)(Math.pow(2, getVoltageSourceCount() - 1));
+			
+			// Actually update the status of the outputs
+			for (int i = 0; i < getVoltageSourceCount(); i++)
+				if ((outputState & (short)(Math.pow(2, i))) > 0)
+					pins[firstOutputPin+getVoltageSourceCount()-1 - i].value = true;
+				else
+					pins[firstOutputPin+getVoltageSourceCount()-1 - i].value = false;
+			
+			clockState = true;
+		}
+		
+		if (pins[CLK].value == false)
+			clockState = false;
 	}
 }
