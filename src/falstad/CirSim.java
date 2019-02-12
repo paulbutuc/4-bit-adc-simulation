@@ -420,6 +420,7 @@ public class CirSim extends Frame
 	chipMenu.add(getClassCheckItem("Add Demultiplexer", "DeMultiplexerElm"));
 	chipMenu.add(getClassCheckItem("Add SIPO shift register", "SipoShiftElm"));
 	chipMenu.add(getClassCheckItem("Add PISO shift register", "PisoShiftElm"));
+	chipMenu.add(getClassCheckItem("Add 76LS164 shift register", "Shift74LS164Elm"));
 	chipMenu.add(getClassCheckItem("Add Phase Comparator", "PhaseCompElm"));
 	chipMenu.add(getClassCheckItem("Add Counter", "CounterElm"));
 	chipMenu.add(getClassCheckItem("Add Decade Counter", "DecadeElm"));
