@@ -536,7 +536,7 @@ public class CirSim extends Frame
 
 	if (useFrame) {
 	    Dimension screen = getToolkit().getScreenSize();
-	    resize(860, 640);
+	    resize(1200, 720);
 	    handleResize();
 	    Dimension x = getSize();
 	    setLocation((screen.width  - x.width)/2,
@@ -2282,7 +2282,7 @@ public class CirSim extends Frame
 	    hintType = -1;
 	    timeStep = 5e-6;
 	    dotsCheckItem.setState(false);
-	    smallGridCheckItem.setState(false);
+	    smallGridCheckItem.setState(true);
 	    powerCheckItem.setState(false);
 	    voltsCheckItem.setState(true);
 	    showValuesCheckItem.setState(true);
