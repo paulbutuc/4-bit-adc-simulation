@@ -8,6 +8,7 @@ class Shift74LS164Elm extends ChipElm {
 	private int CLK, CLR;
 	private int firstOutputPin;
 	private boolean clockState;
+	private boolean clr_connected = false;
 	private short outputState;
 	
 	public Shift74LS164Elm(int xx, int yy) {
@@ -62,7 +63,7 @@ class Shift74LS164Elm extends ChipElm {
 		CLR = pos;
 		pins[pos] = new Pin(1, SIDE_S, "CLR");
 		
-		// Simulate random state
+		// Simulate initial random state
 		for (int i = firstOutputPin; i < getVoltageSourceCount(); i++)
 			if (state.nextInt(100) % 2 == 0)
 				pins[i].value = false;
@@ -72,7 +73,7 @@ class Shift74LS164Elm extends ChipElm {
 		if (pins[CLK].value == true)
 			clockState = true;
 		else
-			clockState = false;				
+			clockState = false;		
 	}
 	
 	int getPostCount() {
@@ -90,10 +91,12 @@ class Shift74LS164Elm extends ChipElm {
 	}
 	
 	void execute() {
-		if (pins[CLR].value == true)
+		if (pins[CLR].value == false && clr_connected == true)
 			clr();
+		else if (pins[CLR].value == true && clr_connected == false)
+			clr_connected = true;
 		
-		if (pins[CLK].value == true && clockState == false && pins[CLR].value == false) {
+		if (pins[CLK].value == true && clockState == false && pins[CLR].value == true) {
 			// Check to state of the outputs and calculate outputState
 			outputState = 0;
 			for (int i = 0; i < getVoltageSourceCount(); i++)

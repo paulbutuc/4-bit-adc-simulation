@@ -2,7 +2,8 @@
 +My Circuits
 shift_std.txt Test Shift Register
 shift_74ls164_test1.txt Test1 74ls164
->shift_74ls164_small1.txt 74ls164 test1 piccolo
+shift_74ls164_small1.txt 74ls164 test1 piccolo
+>74ls164_controllo.txt 74ls164 + cirtuito controllo
 -
 +Basics
 ohms.txt Ohm's Law
