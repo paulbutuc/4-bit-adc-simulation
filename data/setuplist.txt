@@ -3,7 +3,8 @@
 shift_std.txt Test Shift Register
 shift_74ls164_test1.txt Test1 74ls164
 shift_74ls164_small1.txt 74ls164 test1 piccolo
->74ls164_controllo.txt 74ls164 + cirtuito controllo
+74ls164_controllo.txt 74ls164 + cirtuito controllo
+>74ls164_flipflop.txt 74ls164 + flipflop
 -
 +Basics
 ohms.txt Ohm's Law

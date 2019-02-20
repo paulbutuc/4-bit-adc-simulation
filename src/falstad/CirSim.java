@@ -426,6 +426,7 @@ public class CirSim extends Frame
 	chipMenu.add(getClassCheckItem("Add Decade Counter", "DecadeElm"));
 	chipMenu.add(getClassCheckItem("Add 555 Timer", "TimerElm"));
 	chipMenu.add(getClassCheckItem("Add DAC", "DACElm"));
+	chipMenu.add(getClassCheckItem("Add DAC_R2-2", "DacR2RElm"));
 	chipMenu.add(getClassCheckItem("Add ADC", "ADCElm"));
 	chipMenu.add(getClassCheckItem("Add Latch", "LatchElm"));
 	//chipMenu.add(getClassCheckItem("Add Static RAM", "SRAMElm"));
