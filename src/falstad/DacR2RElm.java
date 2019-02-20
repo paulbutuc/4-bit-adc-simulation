@@ -3,9 +3,14 @@ import java.lang.Math;
 import java.util.StringTokenizer;
 import java.util.Random;
 
+/* Implements a R2-R DAC. Values for resistors are hardcoded. For all
+ * resistors Ri = 1kOhm. The voltage inputs are logic 5V or 0V, they
+ * don't depend on the voltage input on the bits.
+ * The resulting formula: R1/R * Vbit/2^n * sum(B*2^(n-1))
+ */
 class DacR2RElm extends ChipElm {
 	private final int nBits = 4;
-	private int b1, b2, b3, b4;
+	private final double Vin = 5;
 	
 	public DacR2RElm(int xx, int yy) {
 		super(xx, yy);
@@ -40,15 +45,22 @@ class DacR2RElm extends ChipElm {
 		// All the pins must be created with 'new'		
 		pins = new Pin[getPostCount()];
 		
-		for (int i = 0; i < 4; i++)
-			pins[i] = new Pin(i, SIDE_W, ""+i);
+		for (int i = 0; i < nBits; i++)
+			pins[i] = new Pin(i, SIDE_W, ""+(i+1));
 			
-		pins[4] = new Pin(1, SIDE_E, "V");
-		
+		pins[nBits] = new antPin(1, SIDE_E, "V");	
+		pins[nBits].output = true;	
 	}
 	
-	void execute() {
-		int i = 0;
-		//System.out.println("exe dacr2r");
+	// Yet to be tested. It looks like it works.
+	void doStep() {
+		double Vout = 0;
+		
+		// is volts[i] related to pins[i] ?
+		for (int i = 0; i < nBits; i++)
+			if (volts[i] > 2.5)
+				Vout = Vout + (Vin/Math.pow(2, nBits)) * Math.pow(2, i);
+		
+		sim.updateVoltageSource(0, nodes[nBits], pins[nBits].voltSource, Vout);		
 	}
 }

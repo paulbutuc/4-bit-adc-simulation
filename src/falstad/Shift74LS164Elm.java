@@ -84,6 +84,7 @@ class Shift74LS164Elm extends ChipElm {
 		return 8;
 	}
 	
+	// Clear function, not using the default one
 	void clr() {
 		for (int i = 0; i < getVoltageSourceCount()+1; i++)
 			pins[i + firstOutputPin].value = false;

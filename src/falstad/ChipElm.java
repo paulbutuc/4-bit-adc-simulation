@@ -144,16 +144,16 @@ import java.util.StringTokenizer;
 	void doStep() {
 	    int i;
 	    for (i = 0; i != getPostCount(); i++) {
-		Pin p = pins[i];
-		if (!p.output)
-		    p.value = volts[i] > 2.5;
+			Pin p = pins[i];
+			if (!p.output)
+				p.value = volts[i] > 2.5;
 	    }
 	    execute();
 	    for (i = 0; i != getPostCount(); i++) {
-		Pin p = pins[i];
-		if (p.output)
-		    sim.updateVoltageSource(0, nodes[i], p.voltSource,
-					p.value ? 5 : 0);
+			Pin p = pins[i];
+			if (p.output)
+				sim.updateVoltageSource(0, nodes[i], p.voltSource,
+						p.value ? 5 : 0);
 	    }
 	}
 	void reset() {
