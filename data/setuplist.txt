@@ -1,10 +1,12 @@
 ### setuplist.txt first line must be a comment
 +My Circuits
-shift_std.txt Test Shift Register
+shift_std.txt Standard Shift Register
 shift_74ls164_test1.txt Test1 74ls164
+r2r_test.txt Test chip R2-R
 shift_74ls164_small1.txt 74ls164 test1 piccolo
 74ls164_controllo.txt 74ls164 + cirtuito controllo
->74ls164_flipflop.txt 74ls164 + flipflop
+74ls164_flipflop.txt 74ls164 + flipflop
+>adc_4bit_v1.txt ADC 4bit completo
 -
 +Basics
 ohms.txt Ohm's Law

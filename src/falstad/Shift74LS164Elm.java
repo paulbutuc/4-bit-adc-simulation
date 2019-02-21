@@ -98,7 +98,7 @@ class Shift74LS164Elm extends ChipElm {
 			clr_connected = true;
 		
 		if (pins[CLK].value == true && clockState == false && pins[CLR].value == true) {
-			// Check to state of the outputs and calculate outputState
+			// Check the state of the outputs and calculate outputState
 			outputState = 0;
 			for (int i = 0; i < getVoltageSourceCount(); i++)
 				if (pins[i + firstOutputPin].value == true)
