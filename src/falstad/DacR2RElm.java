@@ -48,7 +48,7 @@ class DacR2RElm extends ChipElm {
 		for (int i = 0; i < nBits; i++)
 			pins[i] = new Pin(i, SIDE_W, ""+(i+1));
 			
-		pins[nBits] = new antPin(1, SIDE_E, "V");	
+		pins[nBits] = new Pin(1, SIDE_E, "V");	
 		pins[nBits].output = true;	
 	}
 	
@@ -58,9 +58,9 @@ class DacR2RElm extends ChipElm {
 		
 		// is volts[i] related to pins[i] ?
 		for (int i = 0; i < nBits; i++)
-			if (volts[i] > 2.5)
+			if (volts[nBits - (i+1)] > 2.5)
 				Vout = Vout + (Vin/Math.pow(2, nBits)) * Math.pow(2, i);
 		
-		sim.updateVoltageSource(0, nodes[nBits], pins[nBits].voltSource, Vout);		
+		sim.updateVoltageSource(0, nodes[nBits], pins[nBits].voltSource, -Vout);		
 	}
 }
