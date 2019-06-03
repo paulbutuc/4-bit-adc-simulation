@@ -7,6 +7,18 @@ The development of this project involves three main stages:
 2. develop new components for the emulator that will be used by the 4-bit adc circuit;
 3. implement some test circuits and the adc circuit and test them.
 
+## Demo
+[Demo video](adc-demo-video.mp4)
+
+## Run
+This project has only been tested on linux, both on Ubuntu and Fedora.
+
+In order to install, build and run:
+- make sure you have the `java (open)jdk` and `ant` installed. On most linux distros installing `ant` will automatically install all the needed dependencies;
+- clone the project;
+- `cd` into the root folder of the project;
+- run `ant compile` and `ant run` for building and running the project.
+
 ## Acknowledgements
 The emulator is licensed and owned by Paul Falstad. Please see this [link](https://www.falstad.com/licensing.html). The license displayed in this repository applies only to the code that has been developed by the author.
 
