@@ -11,10 +11,10 @@ The development of this project involves three main stages:
 [Demo video](adc-demo-video.mp4)
 
 ## Run
-This project has only been tested on linux, both on Ubuntu and Fedora.
+This project has only been tested on Linux, both on Ubuntu and Fedora.
 
 In order to install, build and run:
-- make sure you have the `java (open)jdk` and `ant` installed. On most linux distros installing `ant` will automatically install all the needed dependencies;
+- make sure you have the `java (open)jdk` and `ant` installed. On most linux distributions installing `ant` will automatically install all the needed dependencies;
 - clone the project;
 - `cd` into the root folder of the project;
 - run `ant compile` and `ant run` for building and running the project.
