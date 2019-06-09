@@ -1,6 +1,6 @@
 Implement a 4-bit ADC using an analog circuit simulator
 ================================================================================
-Use the Java [Falstad Analog Circuit Simulator](https://www.falstad.com/circuit-java) for implementing a 4-bit Analog to Digital Converter.
+Use the Java [Falstad Analog Circuit Simulator](https://www.falstad.com/circuit-java) for implementing a 4-bit Analog to Digital Converter. You can find the schematics and a thorough analysis of the real-world circuit [here](https://github.com/paulbutuc/4-bit-adc).
 
 The development of this project involves three main stages:
 1. setup a easy-to-run project using `ant` and a custom folder structure starting from the raw source code;
@@ -18,6 +18,12 @@ In order to install, build and run:
 - clone the project;
 - `cd` into the root folder of the project;
 - run `ant compile` and `ant run` for building and running the project.
+
+## Goals
+This project can be useful in multiple ways:
+- use it to have an interactive view of how a specific 4-bit adc functions. It can be a very useful companion for [this](https://github.com/paulbutuc/4-bit-adc) project where I actually build a 4-bit adc circuit;
+- explore how programming can be used within the filed of scientific simulation;
+- learn how to manage and develop a simple java project.
 
 ## Acknowledgements
 The emulator is licensed and owned by Paul Falstad. Please see this [link](https://www.falstad.com/licensing.html). The license displayed in this repository applies only to the code that has been developed by the author.
